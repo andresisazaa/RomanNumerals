@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { RomanosService } from './romanos.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tdd';
+  arabicNumber: number;
+  romanNumber = '';
+  constructor(private romanosService: RomanosService) {}
+
+  onInputChange() {
+    this.romanNumber = this.romanosService.convertToRoman(this.arabicNumber);
+  }
 }
